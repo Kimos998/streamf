@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+</head>
+<body>
+    <div id="movies"></div>
+
+    <script>
+        // Fetching data from data.json
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const movies = document.getElementById('movies');
+                data.values.forEach(movie => {
+                    const [id, name, description, url, category] = movie;
+                    const movieDiv = document.createElement('div');
+                    movieDiv.innerHTML = `
+                        <div>
+                            <h3>${name}</h3>
+                            <img src="poster_placeholder.jpg" alt="${name} Poster" width="150">
+                            <p>Category: ${category}</p>
+                            <button onclick="showMovie('${url}', '${name}', '${description}')">Watch</button>
+                        </div>
+                    `;
+                    movies.appendChild(movieDiv);
+                });
+            });
+
+        // Function to show movie details in a new page
+        function showMovie(url, name, description) {
+            sessionStorage.setItem('movieName', name);
+            sessionStorage.setItem('movieDescription', description);
+            window.open('movie.html', '_blank');
+        }
+    </script>
+</body>
+</html>
