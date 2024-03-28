@@ -10,7 +10,7 @@
 
     <script>
         // Fetching data from data.json
-        fetch('https://sheets.googleapis.com/v4/spreadsheets/1l7T7hgeAqg1iIT1TEEqtHnuTr7DBIo0ifoTIceHqh4o/values/Sheet1!A1:E100?key=AIzaSyB5WTjIR5OZt108xl9uQApzeoNRWuMyYRE')
+        fetch('data.json')
             .then(response => response.json())
             .then(data => {
                 const movies = document.getElementById('movies');
