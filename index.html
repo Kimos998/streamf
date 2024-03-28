@@ -15,7 +15,7 @@
                 const movies = document.getElementById('movies');
                 for(let i = 1; i < data.values.length; i++) {
                     const movie = data.values[i];
-                    const [id, name, description, url, category] = movie;
+                    const [id, name, description, url, category, poster] = movie;
                     const movieDiv = document.createElement('div');
                     movieDiv.innerHTML = `
                         <div>
