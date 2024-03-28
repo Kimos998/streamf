@@ -9,12 +9,10 @@
     <div id="movies"></div>
 
     <script>
-        // Fetching data from data.json
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
                 const movies = document.getElementById('movies');
-                // Start iterating from the second row
                 for(let i = 1; i < data.values.length; i++) {
                     const movie = data.values[i];
                     const [id, name, description, url, category] = movie;
@@ -31,11 +29,10 @@
                 }
             });
 
-        // Function to show movie details in a new page
         function showMovie(url, name, description) {
             sessionStorage.setItem('movieName', name);
             sessionStorage.setItem('movieDescription', description);
-            window.open('movie.html', '_blank');
+            window.open(`movie.html?url=${url}`, '_blank');
         }
     </script>
 </body>
