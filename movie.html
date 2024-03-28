@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+</head>
+<body>
+    <div>
+        <h1 id="movieName"></h1>
+        <p id="movieDescription"></p>
+        <video id="moviePlayer" controls autoplay></video>
+    </div>
+
+    <script>
+        const movieName = sessionStorage.getItem('movieName');
+        const movieDescription = sessionStorage.getItem('movieDescription');
+
+        document.getElementById('movieName').textContent = movieName;
+        document.getElementById('movieDescription').textContent = movieDescription;
+
+        const videoUrl = new URLSearchParams(window.location.search).get('url');
+        const videoPlayer = document.getElementById('moviePlayer');
+        videoPlayer.src = videoUrl;
+    </script>
+</body>
+</html>
