@@ -14,19 +14,21 @@
             .then(response => response.json())
             .then(data => {
                 const movies = document.getElementById('movies');
-                data.values.forEach(movie => {
+                // Start iterating from the second row
+                for(let i = 1; i < data.values.length; i++) {
+                    const movie = data.values[i];
                     const [id, name, description, url, category] = movie;
                     const movieDiv = document.createElement('div');
                     movieDiv.innerHTML = `
                         <div>
                             <h3>${name}</h3>
-                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYD25RqXwibwhma80i2EOvxFPSqhHm9FLxVoeEEwVTSWM606Ml9eStNQ9ng3faUge4kGnPL2gEOAD8xVwWQA8j5nxnwwcMjWsYs3v0w4wqyU_H-d8fYP9rpe_vYT-SnRNgCYKUyp-sx2PGewmM6m0akNn6NAKBY4uivqwdYLTJou-CQ5N7V4yvcKOi-kGv/w320-h180/504389-20201201-polestar-2-norwegian-coty-007-1639498821.jpg" alt="${name} Poster" width="150">
+                            <img src="poster_placeholder.jpg" alt="${name} Poster" width="150">
                             <p>Category: ${category}</p>
                             <button onclick="showMovie('${url}', '${name}', '${description}')">Watch</button>
                         </div>
                     `;
                     movies.appendChild(movieDiv);
-                });
+                }
             });
 
         // Function to show movie details in a new page
