@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Details</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"></script>
 </head>
 <body>
-    <div>
-        <h1 id="movieName"></h1>
-        <p id="movieDescription"></p>
-        <video id="moviePlayer" controls autoplay></video>
-    </div>
+    <div id="player"></div>
 
     <script>
         const movieName = sessionStorage.getItem('movieName');
         const movieDescription = sessionStorage.getItem('movieDescription');
+        const videoUrl = new URLSearchParams(window.location.search).get('url');
 
         document.getElementById('movieName').textContent = movieName;
         document.getElementById('movieDescription').textContent = movieDescription;
 
-        const videoUrl = new URLSearchParams(window.location.search).get('url');
-        const videoPlayer = document.getElementById('moviePlayer');
-        videoPlayer.src = videoUrl;
+        var player = new Clappr.Player({
+            source: videoUrl,
+            parentId: "#player",
+            // You can add more configurations here
+        });
     </script>
 </body>
 </html>
+
